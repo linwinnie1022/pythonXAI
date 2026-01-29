@@ -35,3 +35,34 @@ i = 0
 while i < 5:
     print(i)
     i += 1  # i = i + 1
+
+
+# break 可以強制跳出迴圈
+# 先判斷break屬於哪個迴圈，然後跳出該迴圈
+i = 0
+while i < 5:
+    print(i)
+
+    for j in range(5):
+        print(j)
+
+    if i == 3:
+        break  # 跳出迴圈，屬於while迴圈
+    i += 1
+
+for i in range(5):
+    print(i)
+    if i == 3:
+        break  # 跳出迴圈
+
+
+import random  # 匯入random模組
+
+# random.randrange()設定抽籤範圍的方式和range()一樣
+print(random.randrange(7))  # 0~6
+print(random.randrange(1, 6))  # 1~6
+print(random.randrange(1, 6, 2))  # 1~6, 間隔2
+
+# random.randint()設定抽籤範圍的方式一定要設定開始與結束
+# 且結束的數字會包含在內
+print(random.randint(1, 6))  # 1~6
