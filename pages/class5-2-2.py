@@ -1,25 +1,24 @@
-from openai import OpenAI
+import openai  # pip install openai
 from dotenv import load_dotenv
 import os
 
-# 載入 .env
-load_dotenv()
+load_dotenv()  # 載入 .env 檔案內容
 
-# 建立 client（API key 會自動從環境變數讀取）
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# 設定 API 金鑰
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # 初始化對話歷史
 messages = [{"role": "system", "content": "請用繁體中文進行後續對話"}]
 
 while True:
-    user_input = input("你：")
+    user_input = input("你：")  # 終端機輸入使用者訊息
     if user_input.lower() in ["exit", "quit"]:
         break
 
     messages.append({"role": "user", "content": user_input})
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
+    response = openai.chat.completions.create(
+        model="gpt-5.1-chat-latest",
         messages=messages,
     )
 
